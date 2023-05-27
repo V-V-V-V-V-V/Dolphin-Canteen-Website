@@ -1,0 +1,353 @@
+/* CSS reset */
+body {
+    font-family: 'Roboto', sans-serif !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main section */
+.mainscreen {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #DFDBE5;
+    background-image: url("/static/checkoutBG.jpg");
+    color: #963E7B;
+}
+
+/* Card css */
+.card {
+    width: 60rem;
+    margin: auto;
+    background: white;
+    position: center;
+    align-self: center;
+    top: 50rem;
+    border-radius: 1.5rem;
+    box-shadow: 4px 3px 20px #3535358c;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.leftside {
+    background: #030303;
+    width: 40rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+    height: 30rem;
+}
+
+.product {
+    object-fit: cover;
+    width: 30em;
+    height: 30em;
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+
+.rightside {
+    background-color: #ffffff;
+    width: 35rem;
+    border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+}
+
+p {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: .8rem 0;
+}
+
+.inputbox {
+    color: #030303;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: #615a5a;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline: none;
+}
+
+.expcvv {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.expcvv_text {
+    padding-right: 1rem;
+}
+
+.expcvv_text2 {
+    padding: 0 1rem;
+}
+
+.button {
+    background: linear-gradient(135deg, #753370 0%, #298096 100%);
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width: 100%;
+    letter-spacing: .11rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 3px 3px 6px #38373785;
+}
+
+/* Card characteristics */
+@media only screen and (max-width: 1000px) {
+    .card {
+        flex-direction: column;
+        width: auto;
+
+    }
+
+    .leftside {
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+        border-radius: 0;
+    }
+
+    .rightside {
+        width: auto;
+        border-bottom-left-radius: 1.5rem;
+        padding: 0.5rem 3rem 3rem 2rem;
+        border-radius: 0;
+    }
+}
+
+#logo {
+    margin: 10px 34px;
+}
+
+#logo img {
+    height: 100px;
+    margin: 3px 6px;
+}
+
+
+/* Header section */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 80px;
+    background: rgb(174, 198, 206);
+    box-shadow: 0 5px 20px rgb(0 0 0 / 6%);
+    height: 200px;
+    z-index: 999;
+    /* width: 100%; */
+    bottom: 1000px;
+    /* left: 0; */
+    position: sticky;
+}
+
+.logo {
+    width: 151px;
+    height: 150px;
+    object-fit: contain;
+    border: 6px solid lightblue;
+    box-shadow: 7px 7px 7px lightsteelblue;
+    border-radius: 4px;
+}
+
+#naavbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#naavbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+#naavbar li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #39254D;
+    transition: 0.3s ease;
+}
+
+btn btn-secondary {
+    background-color: rgb(174, 198, 206);
+    box-shadow: 2px 2px lightsteelblue;
+}
+
+#naavbar li a:hover,
+#naavbar li a.active {
+    color: beige;
+    transition: 0.15s ease-in-out;
+
+}
+
+#naavbar li a.active::after,
+#naavbar li a:hover::after {
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: beige;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+
+}
+
+/* Pop up modal  */
+.bg-modal {
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 230px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.modal-contents {
+    height: 300px;
+    width: 500px;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    border-radius: 10px;
+}
+
+.btnOrder {
+    margin: 17px;
+    left: -5px;
+    align-items: center;
+    background-color: #fee6e3;
+    border: 2px solid #111;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #111;
+    cursor: pointer;
+    display: flex;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    height: 48px;
+    justify-content: center;
+    line-height: 24px;
+    max-width: 100%;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Footer section */
+
+footer {
+    background: black;
+    color: white;
+    padding: 9px 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    height: 445px;
+}
+
+.section-p1 {
+    padding: 40px 80px;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+}
+
+footer .logo {
+    margin-bottom: 30px;
+}
+
+footer h4 {
+    font-size: 14px;
+    padding-bottom: 20px;
+}
+
+footer p {
+    font-size: 13px;
+
+
+    margin: 0 0 8px 0;
+}
+
+footer a {
+    text-decoration: none;
+    color: #f2f2f2;
+    font-size: 13px;
+    margin-bottom: 10px;
+
+
+}
+
+footer .follow {
+    margin-top: 20px;
+}
+
+footer .follow i {
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+
+}
+
+footer .install img {
+    border: 1px solid #088178;
+    margin: 10px 0 15px 0;
+    width: 338px;
+    height: 126px;
+    border-radius: 16px
+}
+
+footer .follow i:hover,
+a:hover {
+    color: #088178;
+
+
+}
+
+footer .copyright {
+    width: 100%;
+    text-align: center;
+}

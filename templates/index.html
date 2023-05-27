@@ -1,0 +1,233 @@
+<!-- Loading static to access staticfiles like images,css,js files etc -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My SJU Canteen.com</title>
+  <link rel="stylesheet" href="{% static '/main-css/style.css' %}">
+  <link rel="stylesheet" media="screen and (max-width: 1170px)" href="css/phone.css">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai|Bree+Serif&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- Header section -->
+  <section id="header">
+    <a href="#"><img src="{% static 'sjc.jpg' %}" class="logo" alt="SJC"></a>
+    <div>
+      <ul id="naavbar">
+        <li><a class="active" href="{% url 'home' %}">HOME</a></li>
+        <li><a href="{% url 'home' %}#services-container">ABOUT</a></li>
+        <!-- if statement to check user is authenticated then run the rest code  -->
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" onclick='newUser()'>LOGOUT</a></li>
+        <li class="cart"><a href="{%url 'cart' %}">
+            <ion-icon name="basket"></ion-icon>CART <span>0</span>
+          </a></li>
+        {% else %}
+        <li><a href="{% url 'login' %}">LOGIN</a></li>
+        <li><a href="{% url 'signup' %}">SIGN UP</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </section>
+  <!-- Home page section -->
+  <section id="home">
+    {% for message in messages %}
+    <div class="alert alert-{{message.tags}} alert.dismissible fade show" role="alert">
+      <strong>Message:</strong>{{message}}
+      <button type="button" class="alert alert-success" data-dismiss="alert" aria-label="Close">
+      </button>
+    </div>
+    {% endfor %}
+    <h1 class="h-primary">Welcome to Magis Canteen</h1>
+    {% if user.is_authenticated %}
+    <h3>Hello {{ fname }}</h3>
+    <h4>You are succesuflly logged in.!!</h4>
+    {% else %}
+    {% endif %}
+  </section>
+  <!-- Carousel section for sliding images  -->
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'image/Dolphin canteen/d (6).jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Cafeteria Center</h5>
+          <p>The central complex let's access to all the different canteens</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/Dolphin canteen/d (7a).jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Demand</h5>
+          <p>Ready to serve any number at any time without any compromise to quality</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/Dolphin canteen/d (12a).jpg' %}" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Light pockets</h5>
+          <p>Developed with consideration to support people from all economic backgrounds</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Services section to order food in any business -->
+  <section id="services-container">
+    <h1 class="h-primary center">Our Services</h1>
+    <div id="services">
+      <div class="box">
+        <img src="{% static 'New folder (4)/north-east.jpg'%}" alt="">
+        <h2 class="h-secondary center">North-East Canteen</h2>
+        <p class="center">One of the main checkpoints for people of varied ethnicity to explore the delightness of north
+          eastern food. Food options are varied, vibrant and might just be the refreshment you need from
+          the plain old food. Our staff consists of enthusiastic professionals, always willing to help and provide the
+          utmost care to our customers.</p>
+        {% if user.is_authenticated %}
+        <!-- the link to order appears only if user is authenticated -->
+        <button type="submit" class="btnOrder"><a href="{% url 'northeast' %}">Order Here</a></button>
+        {% endif %}
+      </div>
+      <div class="box">
+        <img src="{% static '/New folder (4)/dolphin.jpg'%}" alt="">
+        <h2 class="h-secondary center">Dolphin Canteen</h2>
+        <p class="center">Famous for it's variety and ever functioning timings, we at dolphin canteen try to serve the
+          most flavourful, efficient and pocket friendly meals for everyone. we constantly cater to customer
+          needs, constantly valuing customer feedback and making necessary changes. This is your one final stop for all
+          those cravings.
+        </p>
+        {% if user.is_authenticated %}
+        <!-- the link to order appears only if user is authenticated -->
+        <button type="submit" class="btnOrder"><a href="{% url 'dolphin' %}">Order Here</a></button>
+        {% endif %}
+      </div>
+      <div class="box">
+        <img src="{%static 'New folder (4)/mitti-cafe.jpg'%}" alt="">
+        <h2 class="h-secondary center">Mitti Art Cafe</h2>
+        <p class="center">This is the latest installment in the SJU cafeteria, run by volunteers who are differently
+          abled yet strive to offer the most demanded foods. The atmosphere is quiet different in itself,
+          filled with bright lights and a floral theme which is sure lighten any mood. With tons of exclusive delicacies
+          and unparalleled service, we promise the customer a memorable time.
+        </p>
+        {% if user.is_authenticated %}
+        <!-- the link to order appears only if user is authenticated -->
+        <button type="submit" class="btnOrder"><a href="{% url 'mitticafe' %}">Order Here</a></button>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- Section to display our clients -->
+  <section id="client-section">
+    <h1 class="h-primary center">Our Clients</h1>
+    <div id="clients">
+      <div class="client-item">
+        <img src="{% static '/New folder (4)/1200px-Dominos_pizza_logo.svg.png'%}" alt="Our Client">
+      </div>
+      <div class="client-item">
+        <img src="{% static '/New folder (4)/desivdesi.webp'%}" alt="Our Client">
+      </div>
+
+      <div class="client-item">
+        <img src="{% static '/New folder (4)/pizzahut.png'%}" alt="Our Client">
+      </div>
+      <div class="client-item">
+        <img src="{% static 'New folder (4)/udupiveg.jpeg'%}" alt="Our Client">
+      </div>
+    </div>
+  </section>
+
+  <!-- About section -->
+  <section id="aboutus">
+    <div class="about" id="About">
+      <div class="about_main">
+        <div class="image">
+          <img src="{% static 'images/order_img/Dolphin canteen/d (11).JPG' %}">
+        </div>
+        <div class="about_text">
+          <h1><span>About</span>Us</h1>
+          <h3>Why Choose us?</h3>
+          <p>
+            We are a big part of St.Joseph College. Our services are not just limited to students but teachers and other
+            staffs at well. People love our food and we ensure that our standards are up to mark.
+            Clean and cheap food is provided for the benefits of students. We also provide mid day meals for students
+            who cannot afford. Our services wont disappoint you.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer section  -->
+  <footer id="section-p1">
+    <div class="col">
+      <img class="logo" src="{% static 'sjc.jpg' %}" alt="">
+      <h4>Contact</h4>
+      <p><strong>Address:</strong> 36 Lalbagh Road, Bangalore, Karnataka, India</p>
+      <p><strong>Phone:</strong> +91 9448853066</p>
+      <p><strong>Hours:</strong>9:00 - 18:00, Mon-Sat</p>
+      <div class="follow">
+        <h4>follow us</h4>
+        <div class="icon">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-pinterest-p"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h4>About</h4>
+      <a href="#">About us</a>
+      <a href="#">Terms and conditions</a>
+      <a href="#">Contact us</a>
+    </div>
+    <div class="col">
+      <h4>My account</h4>
+      <a href="login.html">Sign in</a>
+      <a href="cart.html">View cart</a>
+      <a href="#">Help</a>
+    </div>
+    <div class="col install">
+      <p>Secured payment gateways</p>
+      <img src="{% static 'visa.png' %}" alt="">
+    </div>
+    <div class="copyright">
+      <p>@ 2022, Canteen ordering website - proprietary</p>
+    </div>
+  </footer>
+
+  <!-- Java script link  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="{% static 'cart.js' %}"></script>
+
+</body>
+
+</html>

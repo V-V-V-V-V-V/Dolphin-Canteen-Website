@@ -1,0 +1,641 @@
+<!-- Loading satatic to access staticfiles like images,css,js files etc -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MITTI Cafe</title>
+    <link rel="stylesheet" href="{% static 'main-css/mitticafe.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+     <!-- Header section -->
+    <section id="header">
+		<a href="#"><img src="{% static 'sjc.jpg' %}" class="logo" alt="SJC"></a>
+		<div>
+			<ul id="naavbar">
+				<li><a class="active" href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'home' %}#services-container">ABOUT</a></li>
+                 <!-- if statement to check user is authenticated then run the rest code  -->
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}" onclick='newUser()'>LOGOUT</a></li>
+                <li class="cart"><a href="{%url 'cart' %}">
+                    <ion-icon name="basket"></ion-icon>CART <span>0</span>
+                </a>
+                 </li>
+                
+				{% else %}
+				<li><a href="{% url 'login' %}">LOGIN</a></li>
+				
+				<li><a href="{% url 'signup' %}">SIGN UP</a></li>
+				
+			
+            {% endif %}
+			</ul>
+		</div>
+	</section>
+         <!-- Home page section -->
+
+    <section id="Home">
+        
+        <div class="main">
+
+            <div class="men_text">
+                <h1><span>MITTI CAFE</span></h1>
+            </div>
+
+            <div class="main_image">
+                <img src="{% static 'image/Mitti Cafe/m (1).JPG' %}">
+            </div>
+
+        </div>
+
+        <p class="Mitti-cafe">
+           <strong>MITTI Cafe or Magic of abilities Canteen is the heart of the Magis block. People who run this cafe are those who are differently or specially abled.
+            Breakfast, lunch and snacks everything is provided to everyone right on time. Cheap and healthy food is served. Hygiene is given utmost importance.</strong> 
+        </p>
+
+    </section>
+
+
+
+    <!--About-->
+
+    <div class="about" id="About">
+        <div class="about_main">
+
+            <div class="image">
+                <img src="{% static 'image/Mitti Cafe/m (2).JPG' %}">
+            </div>
+
+            <div class="about_text">
+                <h1><span>About</span>Us</h1>
+                <h3>Why <span>Choose</span> us?</h3>
+                <p>
+                    This canteen holds a special place in everyone's heart. Run by people who are specially abled, our services are not just limited to students but teachers and other staffs as well.
+                    People love our food and we ensure that our standards are up to mark.
+                    Clean and cheap food is provided for the benefits of student. Our services wont disappoint you.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!--Menu-->
+
+    <div class="menu" id="Menu">
+        <h1>Our<span>Menu</span></h1>
+
+        <div class="menu_box">
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/burger.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Burger</h2>
+                    <p>
+                        Juicy, big, loaded with toppings of your choice. A blend of veggies and deliciousness.
+                    </p>
+                    <h3>Rs.50.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+            
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/pasta.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Pasta</h2>
+                    <p>Pasta is a staple food of Italian cuisine now brought right to your demands </p>
+                    <h3>Rs.45.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+            </div>
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/rolls.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Roll</h2>
+                    <p>
+                        The tongue tickling spicy masala of grated paneer wrapped in chapati or paratha is a treat to taste buds at anytime anywhere. 
+                    </p>
+                    <h3>Rs.20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>  
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/drinks.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Drink</h2>
+                    <p>
+                        Various caffinated beverages, giving you the initial push of productivity.
+                    </p>
+                    <h3>Rs.30.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/samosa.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Samosa</h2>
+                    <p>
+                        The samosa is a delectable Indian and Tibetan pastry. Normally the samosa is made in a triangular form with pastry crust or filo dough.
+                    </p>
+                    <h3>Rs.12.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/dosa.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Dosa</h2>
+                    <p>
+                        Dosa is crispy and crepe-like and is a very popular street food in India. Dosa is famous for its simple ingredients and savory, slightly bitter flavor.
+                    </p>
+                    <h3>Rs.60.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/juice.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Juice</h2>
+                    <p>
+                        Variety of fresh and healthy juices right at your hand
+                    </p>
+                    <h3>Rs.30.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/biryani.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Biryani</h2>
+                    <p>
+                       It's fiery and aromatic, and heady with black peppercorns, star anise, and cinnamon.
+                    </p>
+                    <h3>Rs.60.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/dairymilk.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Chocolate</h2>
+                    <p>
+                        The classical flavours of chocolate brought right to you.
+                    </p>
+                    <h3>Rs.20.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/souththali.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>South Indian Thali</h2>
+                    <p>
+                        A blend of all of south india brought on one plate.
+                    </p>
+                    <h3>Rs.60.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/dalroti.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Dal roti</h2>
+                    <p>
+                        Popular North Indian unleavened bread served with a spicy lentil curry.
+                    </p>
+                    <h3>Rs.50.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+
+            <div class="menu_card">
+
+                <div class="menu_image">
+                    <img src="{% static 'images/order_img/sandwich.jpg' %}">
+                </div>
+
+                <div class="small_card">
+                    <i class="heart"></i>
+                </div>
+
+                <div class="menu_info">
+                    <h2>Sandwich</h2>
+                    <p>
+                        Made with freshly baked bread, soft and tender meat, and lusciously green veg and other ingredients. 
+                    </p>
+                    <h3>Rs.30.00</h3>
+                    <div class="menu_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+                    <a href="#menu" class="menu_btn">Add to Cart</a>
+                </div>
+
+            </div> 
+            
+        </div>
+
+    </div>
+
+
+
+
+
+    <!--Gallery-->
+
+   <div class="gallary" id="Gallary">
+        <h1>Our<span>Gallery</span></h1>
+
+        <div class="gallary_image_box">
+            <div class="gallary_image">
+                <img src="{% static 'image/Mitti Cafe/m (1).JPG' %}">
+            </div>
+
+            <div class="gallary_image">
+                <img src="{% static 'image/Mitti Cafe/m (4).JPG' %}">
+            </div>
+
+            <div class="gallary_image">
+                <img src="{% static 'image/Mitti Cafe/m (5).JPG' %}">
+            </div>
+
+            <div class="gallary_image">
+                <img src="{% static 'image/Mitti Cafe/m (7).JPG' %}">
+            </div>
+
+            <div class="gallary_image">
+                <img src="{% static 'image/Mitti Cafe/m (9).JPG' %}">
+            </div>
+
+            <div class="gallary_image">
+                <img src="{% static 'image/Mitti Cafe/m (2).JPG' %}">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <!--Review-->
+    <div class="review" id="Review">
+        <h1>Customer<span>Review</span></h1>
+
+        <div class="review_box">
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="{% static 'images/order_img/ankith.jpg' %}">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Ankith Singh</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+
+                    
+
+                    <p>
+                       I can eat here all day! Just love it!
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="{% static 'images/order_img/vishwa.jpg' %}">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Vishwa M</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+
+                   
+
+                    <p>
+                        I really love this canteen.Whenever i am hungry i come here because of the quality of food. Not only it tastes good but its also cheap.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="{% static 'images/order_img/akshay.jpg' %}">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Akshay S</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+
+                    <p>
+                        Very happy with the service. Canteen has variety of food with good taste and quality.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="review_card">
+
+                <div class="review_profile">
+                    <img src="{% static 'images/order_img/kritika.jpg' %}">
+                </div>
+
+                <div class="review_text">
+                    <h2 class="name">Kritika Vijay</h2>
+
+                    <div class="review_icon">
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star"></i>
+                        <i class="fa-solid  fa-star-half-stroke"></i>
+                    </div>
+
+                    <p>
+                        Hygiene is very important to me and dolphic canteen takes care of it very carefully. All the plates, tables and the surroundings are cleaned every moment.And of course the taste of food is really good here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--Footer-->
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="{% static 'sjc.jpg' %}" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 36 Lalbagh Road, Bangalore, Karnataka, India</p>
+            <p><strong>Phone:</strong> +91 9448853066</p>
+            <p><strong>Hours:</strong>9:00 - 18:00, Mon-Sat</p>
+            <div class="follow">
+                <h4>follow us</h4>
+                
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="{% url 'home' %}#contact">About us</a>
+            <a href="#">Terms and conditions</a>
+            <a href="{% url 'home' %}#section-p1">Contact us</a>
+        </div>
+        <div class="col">
+            <h4>My account</h4>
+            <a href="{% url 'login' %}">Sign in</a>
+            <a href="{% url 'cart' %}">View cart</a>
+            <a href="#">Help</a>
+    
+        </div>
+        <div class="col install">
+            <p>Secured payment gateways</p>
+            <img src="{% static 'visa.png' %}"alt="">
+
+        </div>
+        <div class="copyright">
+            <p>@ 2022, Canteen ordering website - proprietary</p>
+
+        </div>
+    </footer>
+<!-- Java script link  -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>  
+    <script src="{% static 'cart.js' %}"></script>
+    
+
+
+
+
+    
+</body>
+</html>

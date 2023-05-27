@@ -1,0 +1,121 @@
+<!-- Loading satatic to access staticfiles like images,css,js files etc -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CheckOut</title>
+  <link rel="stylesheet" href="{% static '/main-css/checkout.css' %}">
+
+</head>
+
+<body onload='showTotal()'>
+  <!--To access total from cart page to here -->
+  <!-- Header section -->
+  <section id="header">
+    <a href="#"><img src="{% static 'sjc.jpg' %}" class="logo" alt="SJC"></a>
+    <div>
+      <ul id="naavbar">
+        <li><a class="active" href="{% url 'home' %}">HOME</a></li>
+
+        <li><a href="{% url 'home' %}#services-container">ABOUT</a></li>
+
+        <li><a href="{% url 'logout' %}" onclick='newUser()'>LOGOUT</a></li>
+
+        <li class="cart"><a href="{%url 'cart' %}">
+            <ion-icon name="basket"></ion-icon>CART <span>0</span>
+          </a>
+        </li>
+
+        <li><a href="{% url 'login' %}">LOGIN</a></li>
+
+        <li><a href="{% url 'signup' %}">SIGN UP</a></li>
+
+
+
+      </ul>
+    </div>
+  </section>
+  <!-- Checkout payment box -->
+  <div class="mainscreen">
+    <div class="card">
+      <div class="leftside">
+        <img src="{% static 'qrcode.jpg' %}" class="product" alt="Shoes" />
+      </div>
+      <div class="rightside">
+
+        <centre>
+          <h1>CheckOut</h1>
+          <h2>Payment Information</h2>
+          </center>
+          <h4>Total bill is </h4>
+          <h2 class="total">
+          </h2>
+          <p>Pay via upi by scannibg or using this link and click submit your order will be confirmed</p>
+          <button id="button" onclick='showModal()' class="button">CheckOut</button>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="bg-modal">
+    <div class="modal-contents">
+      <center>
+        <h1>YOUR ORDER IS SUCCESSFULLY PLACED THANK YOU SO MUCH!!
+        </h1>
+        <h4>Cick here to go back home</h4>
+        <button type="submit" class="btnOrder"><a href="{% url 'home' %}">Order Here</a></button>
+      </center>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="section-p1">
+    <div class="col">
+      <img class="logo" src="{% static 'sjc.jpg' %}" alt="">
+      <h4>Contact</h4>
+      <p><strong>Address:</strong> 36 Lalbagh Road, Bangalore, Karnataka, India</p>
+      <p><strong>Phone:</strong> +91 9448853066</p>
+      <p><strong>Hours:</strong> 9:00 - 18:00, Mon-Sat</p>
+      <div class="follow">
+        <h4>follow us</h4>
+
+        <div class="icon">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-pinterest-p"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <h4>About</h4>
+      <a href="{% url 'home' %}#contact">About us</a>
+      <a href="#">Terms and conditions</a>
+      <a href="{% url 'home' %}#section-p1">Contact us</a>
+    </div>
+    <div class="col">
+      <h4>My account</h4>
+      <a href="{% url 'login' %}">Sign in</a>
+      <a href="{% url 'cart' %}">View cart</a>
+      <a href="#">Help</a>
+
+    </div>
+    <div class="col install">
+      <p>Secured payment gateways</p>
+      <div>
+        <img src="{% static 'visa.png' %}" alt="">
+      </div>
+
+    </div>
+    <div class="copyright">
+      <p>@ 2022, Canteen ordering website - proprietary</p>
+
+
+
+</body>
+<!-- Java Script link  -->
+<script src="{% static 'cart.js' %}"></script>
+
+</html>

@@ -1,0 +1,141 @@
+*
+
+/* Body features */
+body {
+  background-image: url(/static/SJC3.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  padding-top: 15px;
+}
+
+h4 {
+  text-align: center;
+}
+
+/* Signup form section */
+.signup-box {
+  width: 450px;
+  height: 690px;
+  margin: auto;
+  border: #365ea8 8px double;
+  background-color: white;
+  border-radius: 6px;
+  margin-block-start: 130px;
+
+}
+
+
+
+form {
+  width: 300px;
+  margin-left: 20px;
+  align-items: center;
+}
+
+form label {
+  display: flex;
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+form input {
+  width: 25em;
+  padding: 7px;
+  border: none;
+  border: 1px solid gray;
+  border-radius: 6px;
+  outline: none;
+}
+
+input[type="button"] {
+  width: 320px;
+  height: 35px;
+  margin-top: 20px;
+  border: none;
+  background-color: #49c1a2;
+  color: white;
+  font-size: 18px;
+}
+
+h3 {
+  text-align: center;
+  font-size: 34px;
+  margin: 20px;
+  width: 300px;
+  text-decoration: underline;
+  font-weight: 500;
+  padding: 15px;
+  font-family: unset;
+  color: #2222b1;
+  margin-left: 35px;
+
+}
+
+
+
+h1 {
+  font-weight: 1000;
+  font-style: bold;
+  padding: 6px;
+  font-family: unset;
+  color: #2222b1;
+  border: white 0px;
+  text-decoration: underline;
+
+}
+
+p {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 15px;
+}
+
+.para-2 {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.para-2 a {
+  color: #00ffbd;
+}
+
+#box {
+  height: 590px;
+  padding: 23px;
+}
+
+#submit {
+  margin-top: 20px;
+  color: #1557cd;
+  background-color: #b9cccf;
+  height: 35px;
+  border-radius: 5px;
+  width: 405px;
+  text-align: center;
+  font-weight: 300;
+
+}
+
+/* Alert message */
+.alert {
+  width: 350px;
+}
+
+img {
+  padding: 5px;
+  height: 100px;
+  position: absolute;
+  left: 47%;
+  border-style: double;
+  border: #1557cd 8px solid;
+}

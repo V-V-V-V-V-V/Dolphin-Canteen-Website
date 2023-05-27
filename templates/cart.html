@@ -1,0 +1,60 @@
+<!-- Loading satatic to access staticfiles like images,css,js files etc -->
+{%load static%}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Cart</title>
+	<link rel="stylesheet" href="{%  static 'main-css/cart.css'%}">
+
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,900" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Header section -->
+	<secion id="header">
+		<a href="#"><img src="{% static 'sjc.jpg' %}" class="logo" alt="SJC"></a>
+		<div>
+			<!-- Navigation bar -->
+			<ul id="naavbar">
+				<li><a href="{% url 'home' %}">HOME</a></li>
+				<li><a href="{% url 'home' %}#services-container">ABOUT</a></li>
+				<!-- if statement to check user is authenticated then run the rest code  -->
+				{% if user.is_authenticated %}
+				<li><a href="{% url 'logout' %}" onclick='newUser()'>LOGOUT</a></li>
+				<li class="cart"><a href="{%url 'cart' %}">
+						<ion-icon name="basket"></ion-icon>CART <span>0</span>
+					</a>
+				</li>
+
+				{% else %}
+				<li><a href="{% url 'login' %}">LOGIN</a></li>
+
+				<li><a href="{% url 'signup' %}">SIGN UP</a></li>
+
+				{% endif %}
+			</ul>
+		</div>
+	</secion>
+
+	<!-- Main cart section -->
+	<section>
+		<div class="div CartContainer">
+			<div class="Header">
+				<h3 class="Heading">Your Cart</h3>
+				<h4 type="button" onclick='removeAll()' class="Action">Remove All</h4>
+			</div>
+			<div class="product">
+			</div>
+			<hr>
+			<div class="checkout">
+			</div>
+	</section>
+	<!-- Java script links -->
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script src="{% static 'cart.js' %}"></script>
+
+</body>
+
+</html>
